@@ -43,39 +43,39 @@
 }
 
 :root {
-  --primary: var(--color-blue-700);
-  --primary-foreground: var(--color-blue-50);
-  --sidebar-primary: var(--color-blue-600);
-  --sidebar-primary-foreground: var(--color-blue-50);
-  --chart-1: var(--color-blue-300);
-  --chart-2: var(--color-blue-500);
-  --chart-3: var(--color-blue-600);
-  --chart-4: var(--color-blue-700);
-  --chart-5: var(--color-blue-800);
-  --radius: 0.65rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.235 0.015 65);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.235 0.015 65);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.235 0.015 65);
-  --secondary: oklch(0.98 0.001 286.375);
-  --secondary-foreground: oklch(0.4 0.015 65);
-  --muted: oklch(0.967 0.001 286.375);
-  --muted-foreground: oklch(0.552 0.016 285.938);
-  --accent: oklch(0.967 0.001 286.375);
-  --accent-foreground: oklch(0.141 0.005 285.823);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(0.92 0.004 286.32);
-  --input: oklch(0.92 0.004 286.32);
-  --ring: oklch(0.623 0.214 259.815);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.235 0.015 65);
-  --sidebar-accent: oklch(0.967 0.001 286.375);
-  --sidebar-accent-foreground: oklch(0.141 0.005 285.823);
-  --sidebar-border: oklch(0.92 0.004 286.32);
-  --sidebar-ring: oklch(0.623 0.214 259.815);
+  --primary: 188 100% 42%; /* Cyan blue #00bcd4 */
+  --primary-foreground: 0 0% 100%;
+  --sidebar-primary: 188 100% 42%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --chart-1: 188 100% 42%;
+  --chart-2: 210 100% 50%;
+  --chart-3: 188 80% 60%;
+  --chart-4: 210 80% 40%;
+  --chart-5: 188 60% 70%;
+  --radius: 0.5rem;
+  --background: 210 100% 6%; /* Dark blue #0a1929 */
+  --foreground: 0 0% 100%; /* White */
+  --card: 210 50% 12%;
+  --card-foreground: 0 0% 100%;
+  --popover: 210 50% 12%;
+  --popover-foreground: 0 0% 100%;
+  --secondary: 210 40% 20%;
+  --secondary-foreground: 0 0% 100%;
+  --muted: 210 30% 15%;
+  --muted-foreground: 0 0% 70%;
+  --accent: 188 100% 42%; /* Cyan */
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 210 30% 20%;
+  --input: 210 30% 20%;
+  --ring: 188 100% 42%;
+  --sidebar: 210 50% 12%;
+  --sidebar-foreground: 0 0% 100%;
+  --sidebar-accent: 188 100% 42%;
+  --sidebar-accent-foreground: 0 0% 100%;
+  --sidebar-border: 210 30% 20%;
+  --sidebar-ring: 188 100% 42%;
 }
 
 .dark {
@@ -119,6 +119,12 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family: 'Cairo', sans-serif;
+    direction: rtl;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cairo', sans-serif;
+    font-weight: 700;
   }
   button:not(:disabled),
   [role="button"]:not([aria-disabled="true"]),
