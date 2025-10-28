@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Activity, Github, Linkedin, Twitter, Youtube, CreditCard, Wallet } from "lucide-react";
+import { Activity, CreditCard, Wallet } from "lucide-react";
 
 export default function Home() {
   return (
@@ -57,58 +57,9 @@ export default function Home() {
         </div>
       </main>
 
-      {/* Contact Section */}
+      {/* Payment Section */}
       <section className="py-12 sm:py-16 px-4 border-t border-border/50">
         <div className="container max-w-2xl mx-auto text-center space-y-8">
-          {/* Section Title */}
-          <h3 className="text-2xl sm:text-3xl font-bold text-white">
-            لنبقى على تواصل
-          </h3>
-
-          <p className="text-base sm:text-lg text-muted-foreground max-w-xl mx-auto">
-            تابعني على منصات التواصل الاجتماعي للاطلاع على آخر المستجدات والمحتوى التقني الذي أقدمه.
-          </p>
-
-          {/* Social Media Icons */}
-          <div className="flex justify-center gap-6 sm:gap-8 pt-4">
-            <a 
-              href="https://github.com" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-primary transition-colors"
-              aria-label="GitHub"
-            >
-              <Github className="w-8 h-8 sm:w-10 sm:h-10" />
-            </a>
-            <a 
-              href="https://linkedin.com" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-primary transition-colors"
-              aria-label="LinkedIn"
-            >
-              <Linkedin className="w-8 h-8 sm:w-10 sm:h-10" />
-            </a>
-            <a 
-              href="https://twitter.com" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-primary transition-colors"
-              aria-label="Twitter"
-            >
-              <Twitter className="w-8 h-8 sm:w-10 sm:h-10" />
-            </a>
-            <a 
-              href="https://youtube.com" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-primary transition-colors"
-              aria-label="YouTube"
-            >
-              <Youtube className="w-8 h-8 sm:w-10 sm:h-10" />
-            </a>
-          </div>
-
           {/* Payment Methods */}
           <div className="pt-8">
             <h4 className="text-lg sm:text-xl font-semibold text-white mb-6">
