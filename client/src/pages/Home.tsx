@@ -114,16 +114,34 @@ export default function Home() {
             <h4 className="text-lg sm:text-xl font-semibold text-white mb-6">
               وسائل الدفع المعتمدة
             </h4>
-            <div className="flex justify-center gap-6 sm:gap-8">
-              <div className="flex items-center gap-2 px-6 py-3 bg-card rounded-lg border border-border">
-                <Wallet className="w-6 h-6 text-primary" />
-                <span className="text-white font-medium">زين كاش</span>
-              </div>
-              <div className="flex items-center gap-2 px-6 py-3 bg-card rounded-lg border border-border">
-                <CreditCard className="w-6 h-6 text-primary" />
-                <span className="text-white font-medium">كي كارد</span>
+            <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6">
+              {/* ZainCash Payment */}
+              <button
+                onClick={() => {
+                  navigator.clipboard.writeText('07830960059');
+                  alert('تم نسخ رقم زين كاش: 07830960059\n\nيمكنك الآن فتح تطبيق زين كاش وإرسال المبلغ');
+                }}
+                className="flex items-center gap-3 px-6 py-4 bg-card hover:bg-card/80 rounded-lg border-2 border-primary/50 hover:border-primary transition-all cursor-pointer group"
+              >
+                <Wallet className="w-6 h-6 text-primary group-hover:scale-110 transition-transform" />
+                <div className="text-right">
+                  <span className="text-white font-semibold block">زين كاش</span>
+                  <span className="text-primary text-sm font-mono">07830960059</span>
+                </div>
+              </button>
+              
+              {/* Qi Card (Coming Soon) */}
+              <div className="flex items-center gap-3 px-6 py-4 bg-card/50 rounded-lg border border-border/50 opacity-60">
+                <CreditCard className="w-6 h-6 text-muted-foreground" />
+                <div className="text-right">
+                  <span className="text-muted-foreground font-medium block">كي كارد</span>
+                  <span className="text-muted-foreground text-xs">قريباً</span>
+                </div>
               </div>
             </div>
+            <p className="text-xs text-muted-foreground mt-4 text-center">
+              اضغط على زين كاش لنسخ رقم المحفظة
+            </p>
           </div>
         </div>
       </section>
