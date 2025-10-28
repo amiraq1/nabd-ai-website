@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import { Activity, CreditCard, Wallet } from "lucide-react";
 
 export default function Home() {
@@ -29,31 +28,6 @@ export default function Home() {
           <p className="text-base sm:text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed px-4">
             مرحباً، أنا عمار محمد. صانع محتوى، تقني متخصص في تبسيط المفاهيم المعقدة وتقديمها للجمهور العربي بأسلوب شيق ومبتكر
           </p>
-
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
-            <Button 
-              size="lg" 
-              className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-white font-semibold px-8 py-6 text-lg"
-            >
-              اعرف المزيد عني
-            </Button>
-            <Button 
-              size="lg" 
-              variant="outline" 
-              className="w-full sm:w-auto border-2 border-primary/50 text-white hover:bg-primary/10 font-semibold px-8 py-6 text-lg"
-            >
-              اكتشف أعمالي
-            </Button>
-          </div>
-
-          <Button 
-            size="lg" 
-            variant="secondary" 
-            className="w-full sm:w-auto bg-secondary hover:bg-secondary/80 text-white font-semibold px-8 py-6 text-lg mt-2"
-          >
-            تواصل معي
-          </Button>
         </div>
       </main>
 
