@@ -25,6 +25,7 @@
 - [x] حذف مجلد server غير المستخدم
 - [x] إصلاح مسار outputDirectory في vercel.json
 - [x] نشر الموقع على Vercel
+- [x] إصلاح خطأ nested anchor tags
 - [ ] إضافة تأثيرات الحركة (Animations)
 - [ ] تحسين الأداء والسرعة
 - [ ] إضافة Meta Tags لتحسين SEO
