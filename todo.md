@@ -26,6 +26,7 @@
 - [x] إصلاح مسار outputDirectory في vercel.json
 - [x] نشر الموقع على Vercel
 - [x] إصلاح خطأ nested anchor tags
+- [ ] إصلاح أمر البناء في vercel.json
 - [ ] إضافة تأثيرات الحركة (Animations)
 - [ ] تحسين الأداء والسرعة
 - [ ] إضافة Meta Tags لتحسين SEO
