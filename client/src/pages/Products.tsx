@@ -60,15 +60,17 @@ export default function Products() {
       {/* Header */}
       <header className="py-6 px-4 border-b border-border/50">
         <div className="container max-w-6xl mx-auto flex justify-between items-center">
-          <Link href="/">
-            <a className="text-2xl font-bold text-white hover:text-primary transition-colors">
-              نبض <span className="text-primary">AI</span>
-            </a>
+          <Link
+            href="/"
+            className="text-2xl font-bold text-white hover:text-primary transition-colors"
+          >
+            نبض <span className="text-primary">AI</span>
           </Link>
-          <Link href="/">
-            <a className="text-muted-foreground hover:text-white transition-colors">
-              العودة للرئيسية
-            </a>
+          <Link
+            href="/"
+            className="text-muted-foreground hover:text-white transition-colors"
+          >
+            العودة للرئيسية
           </Link>
         </div>
       </header>
