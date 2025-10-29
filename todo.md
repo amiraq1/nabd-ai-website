@@ -24,6 +24,7 @@
 - [x] إصلاح إعدادات Vercel لنشر الموقع بشكل صحيح
 - [x] حذف مجلد server غير المستخدم
 - [x] إصلاح مسار outputDirectory في vercel.json
+- [x] نشر الموقع على Vercel
 - [ ] إضافة تأثيرات الحركة (Animations)
 - [ ] تحسين الأداء والسرعة
 - [ ] إضافة Meta Tags لتحسين SEO
