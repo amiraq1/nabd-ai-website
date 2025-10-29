@@ -9,7 +9,8 @@ export function usePersistFn<T extends noop>(fn: T) {
   const fnRef = useRef<T>(fn);
   fnRef.current = fn;
 
-  const persistFn = useRef<T>(null);
+  // The ref can start as null until we assign the stable function once
+  const persistFn = useRef<T | null>(null);
   if (!persistFn.current) {
     persistFn.current = function (this: unknown, ...args) {
       return fnRef.current!.apply(this, args);
