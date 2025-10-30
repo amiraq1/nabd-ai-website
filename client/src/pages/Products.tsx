@@ -1,5 +1,7 @@
 import { ShoppingCart, Package, Code, Video, BookOpen } from "lucide-react";
 import { Link } from "wouter";
+import { Helmet } from "react-helmet-async";
+import { motion } from "framer-motion";
 
 interface Product {
   id: number;
@@ -58,7 +60,17 @@ export default function Products() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-b from-[#0a1929] to-[#051222]">
+    <>
+      <Helmet>
+        <title>المنتجات والخدمات - نبض AI</title>
+        <meta name="description" content="اكتشف مجموعة من الخدمات والمنتجات الرقمية المصممة خصيصاً لمساعدتك في رحلتك التقنية" />
+        <meta name="keywords" content="منتجات رقمية, خدمات تقنية, دورات, استشارات, نبض AI" />
+        <meta property="og:title" content="المنتجات والخدمات - نبض AI" />
+        <meta property="og:description" content="اكتشف مجموعة من الخدمات والمنتجات الرقمية المصممة خصيصاً لمساعدتك في رحلتك التقنية" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+      </Helmet>
+      <div className="min-h-screen flex flex-col bg-gradient-to-b from-[#0a1929] to-[#051222]">
       {/* Header */}
       <header className="py-6 px-4 border-b border-border/50">
         <div className="container max-w-6xl mx-auto flex justify-between items-center">
@@ -78,15 +90,30 @@ export default function Products() {
       {/* Hero Section */}
       <section className="py-12 sm:py-16 px-4">
         <div className="container max-w-6xl mx-auto text-center">
-          <div className="flex justify-center mb-6">
+          <motion.div 
+            className="flex justify-center mb-6"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+          >
             <ShoppingCart className="w-12 h-12 text-primary" />
-          </div>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
+          </motion.div>
+          <motion.h1 
+            className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
             المنتجات والخدمات
-          </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          </motion.h1>
+          <motion.p 
+            className="text-lg text-muted-foreground max-w-2xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
             اكتشف مجموعة من الخدمات والمنتجات الرقمية المصممة خصيصاً لمساعدتك في رحلتك التقنية
-          </p>
+          </motion.p>
         </div>
       </section>
 
@@ -94,10 +121,14 @@ export default function Products() {
       <section className="py-8 px-4 flex-1">
         <div className="container max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
-            {products.map((product) => (
-              <div
+            {products.map((product, index) => (
+              <motion.div
                 key={product.id}
                 className="bg-card border border-border rounded-lg p-6 hover:border-primary/50 transition-all group"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.6 + (index * 0.1) }}
+                whileHover={{ scale: 1.02 }}
               >
                 {/* Icon */}
                 <div className="flex items-center gap-3 mb-4">
@@ -134,7 +165,7 @@ export default function Products() {
                     اشتري الآن
                   </button>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -161,6 +192,7 @@ export default function Products() {
           </p>
         </div>
       </footer>
-    </div>
+      </div>
+    </>
   );
 }

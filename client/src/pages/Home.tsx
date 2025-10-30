@@ -1,38 +1,72 @@
 import { Activity, CreditCard, Wallet, ShoppingBag } from "lucide-react";
 import homeContent from "../content/home.json";
 import { Link } from "wouter";
+import { Helmet } from "react-helmet-async";
+import { motion } from "framer-motion";
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-b from-[#0a1929] to-[#051222]">
+    <>
+      <Helmet>
+        <title>نبض AI - صناعة المحتوى الرقمي بأسلوب عصري</title>
+        <meta name="description" content="مرحباً، أنا عمار محمد. صانع محتوى، تقني متخصص في تبسيط المفاهيم المعقدة وتقديمها للجمهور العربي بأسلوب شيق ومبتكر" />
+        <meta name="keywords" content="نبض AI, صناعة المحتوى, المحتوى الرقمي, عمار محمد, تقنية, عربي" />
+        <meta property="og:title" content="نبض AI - صناعة المحتوى الرقمي بأسلوب عصري" />
+        <meta property="og:description" content="مرحباً، أنا عمار محمد. صانع محتوى، تقني متخصص في تبسيط المفاهيم المعقدة وتقديمها للجمهور العربي بأسلوب شيق ومبتكر" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="نبض AI - صناعة المحتوى الرقمي بأسلوب عصري" />
+        <meta name="twitter:description" content="مرحباً، أنا عمار محمد. صانع محتوى، تقني متخصص في تبسيط المفاهيم المعقدة وتقديمها للجمهور العربي بأسلوب شيق ومبتكر" />
+      </Helmet>
+      <div className="min-h-screen flex flex-col bg-gradient-to-b from-[#0a1929] to-[#051222]">
       {/* Hero Section */}
       <main className="flex-1 flex flex-col items-center justify-center px-4 py-12 sm:py-16">
         <div className="container max-w-2xl mx-auto text-center space-y-8">
           {/* Logo with Heartbeat Icon */}
-          <div className="flex items-center justify-center gap-3 mb-6">
+          <motion.div 
+            className="flex items-center justify-center gap-3 mb-6"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
             <Activity className="w-10 h-10 sm:w-12 sm:h-12 text-primary animate-pulse" strokeWidth={2.5} />
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold">
               <span className="text-white">{homeContent.main_title.split(' ')[0]}</span>
               <span className="text-primary">{homeContent.main_title.split(' ').slice(1).join(' ')}</span>
             </h1>
-          </div>
+          </motion.div>
 
           {/* Main Heading */}
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white leading-tight">
+          <motion.h2 
+            className="text-2xl sm:text-3xl md:text-4xl font-bold text-white leading-tight"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
             {homeContent.sub_title}
-          </h2>
+          </motion.h2>
 
           {/* Description */}
-          <p className="text-base sm:text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed px-4">
+          <motion.p 
+            className="text-base sm:text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed px-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
             {homeContent.description}
-          </p>
+          </motion.p>
 
 
         </div>
       </main>
 
       {/* Payment Section */}
-      <section className="py-12 sm:py-16 px-4 border-t border-border/50">
+      <motion.section 
+        className="py-12 sm:py-16 px-4 border-t border-border/50"
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.6 }}
+      >
         <div className="container max-w-2xl mx-auto text-center space-y-8">
           {/* Payment Methods */}
           <div className="pt-8">
@@ -69,7 +103,7 @@ export default function Home() {
             </p>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Footer */}
       <footer className="py-8 px-4 border-t border-border/50">
@@ -97,8 +131,8 @@ export default function Home() {
           </Link>
           </div>
         </div>
-</footer>
-    </div>
-      
+      </footer>
+      </div>
+    </>
   );
 }
