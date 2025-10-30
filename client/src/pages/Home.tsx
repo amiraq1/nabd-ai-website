@@ -91,7 +91,7 @@ export default function Home() {
 
           {/* Products Button */}
           <div className="pt-6">
-          <Link href="/products" className="inline-flex items-center gap-3 px-8 py-4 bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg transition-all hover:scale-105 text-lg">
+          <Link href="/products" className="inline-flex items-center gap-3 px-8 py-4 bg-primary text-white font-semibold rounded-lg transition-all hover:scale-105 text-lg shadow-lg shadow-primary/50 hover:shadow-primary/70 transform hover:bg-primary/90">
             <ShoppingBag className="w-6 h-6" />
             <span>تصفح المنتجات والخدمات</span>
           </Link>
