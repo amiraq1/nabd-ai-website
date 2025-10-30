@@ -10,40 +10,9 @@ interface Product {
   icon: React.ReactNode;
 }
 
-const products: Product[] = [
-  {
-    id: 1,
-    name: "استشارة تقنية شخصية",
-    description: "جلسة استشارية مدتها ساعة واحدة لمناقشة مشاريعك التقنية وتقديم حلول مبتكرة",
-    price: 50000,
-    category: "service",
-    icon: <Code className="w-8 h-8" />
-  },
-  {
-    id: 2,
-    name: "دورة صناعة المحتوى الرقمي",
-    description: "دورة شاملة لتعلم صناعة المحتوى الرقمي من الصفر حتى الاحتراف",
-    price: 150000,
-    category: "digital",
-    icon: <Video className="w-8 h-8" />
-  },
-  {
-    id: 3,
-    name: "كتاب إلكتروني: دليل المبتدئين",
-    description: "كتاب شامل يغطي أساسيات البرمجة والتقنية بأسلوب مبسط وعملي",
-    price: 25000,
-    category: "digital",
-    icon: <BookOpen className="w-8 h-8" />
-  },
-  {
-    id: 4,
-    name: "حزمة قوالب جاهزة",
-    description: "مجموعة من القوالب الاحترافية للمواقع والتطبيقات قابلة للتخصيص",
-    price: 75000,
-    category: "digital",
-    icon: <Package className="w-8 h-8" />
-  }
-];
+const products: Product[] = []
+
+
 
 export default function Products() {
   const handleBuyNow = (product: Product) => {
