@@ -1,4 +1,4 @@
-import { Activity, CreditCard, Wallet } from "lucide-react";
+import { Activity, CreditCard, Wallet, ShoppingBag } from "lucide-react";
 import homeContent from "../content/home.json";
 import { Link } from "wouter";
 
@@ -88,8 +88,15 @@ export default function Home() {
           <p className="text-xs text-muted-foreground mt-2">
             لم يتم نشر أي مقالات بعد. كن أول من يكتبها!
           </p>
+
+          {/* Products Button */}
+          <div className="pt-6">
+          <Link href="/products" className="inline-flex items-center gap-3 px-8 py-4 bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg transition-all hover:scale-105 text-lg">
+            <ShoppingBag className="w-6 h-6" />
+            <span>تصفح المنتجات والخدمات</span>
+          </Link>
+          </div>
         </div>
-      </footer>
     </div>
   );
 }
