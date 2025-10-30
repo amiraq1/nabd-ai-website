@@ -1,4 +1,5 @@
-import { Activity, CreditCard, Wallet, ShoppingBag } from "lucide-react";
+import { Activity, CreditCard, Wallet } from "lucide-react";
+import homeContent from "../content/home.json";
 import { Link } from "wouter";
 
 export default function Home() {
@@ -11,23 +12,19 @@ export default function Home() {
           <div className="flex items-center justify-center gap-3 mb-6">
             <Activity className="w-10 h-10 sm:w-12 sm:h-12 text-primary animate-pulse" strokeWidth={2.5} />
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold">
-              <span className="text-white">نبض</span>
-              <span className="text-primary"> AI</span>
+              <span className="text-white">{homeContent.main_title.split(' ')[0]}</span>
+              <span className="text-primary">{homeContent.main_title.split(' ').slice(1).join(' ')}</span>
             </h1>
           </div>
 
           {/* Main Heading */}
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white leading-tight">
-            صناعة المحتوى
-            <br />
-            <span className="text-primary">الرقمي بأسلوب</span>
-            <br />
-            عصري
+            {homeContent.sub_title}
           </h2>
 
           {/* Description */}
           <p className="text-base sm:text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed px-4">
-            مرحباً، أنا عمار محمد. صانع محتوى، تقني متخصص في تبسيط المفاهيم المعقدة وتقديمها للجمهور العربي بأسلوب شيق ومبتكر
+            {homeContent.description}
           </p>
 
 
@@ -46,15 +43,15 @@ export default function Home() {
               {/* ZainCash Payment */}
               <button
                 onClick={() => {
-                  navigator.clipboard.writeText('07830960059');
-                  alert('تم نسخ رقم زين كاش: 07830960059\n\nيمكنك الآن فتح تطبيق زين كاش وإرسال المبلغ');
+                  navigator.clipboard.writeText(homeContent.zaincash_number);
+                  alert(`تم نسخ رقم زين كاش: ${homeContent.zaincash_number}\n\nيمكنك الآن فتح تطبيق زين كاش وإرسال المبلغ`);
                 }}
                 className="flex items-center gap-3 px-6 py-4 bg-card hover:bg-card/80 rounded-lg border-2 border-primary/50 hover:border-primary transition-all cursor-pointer group"
               >
                 <Wallet className="w-6 h-6 text-primary group-hover:scale-110 transition-transform" />
                 <div className="text-right">
                   <span className="text-white font-semibold block">زين كاش</span>
-                  <span className="text-primary text-sm font-mono">07830960059</span>
+                  <span className="text-primary text-sm font-mono">{homeContent.zaincash_number}</span>
                 </div>
               </button>
               
