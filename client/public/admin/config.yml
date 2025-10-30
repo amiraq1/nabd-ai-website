@@ -1,6 +1,7 @@
 backend:
-  name: git-gateway
+  name: github
   branch: main # اسم الفرع الرئيسي لمستودعك
+  repo: amiraq1/nabd-ai-website # اسم مستودع GitHub
 
 publish_mode: editorial_workflow # يفضل استخدام سير عمل التحرير للمراجعة قبل النشر
 
