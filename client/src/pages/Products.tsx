@@ -1,4 +1,6 @@
 import { ShoppingCart, Package, Code, Video, BookOpen } from "lucide-react";
+import { useState, useEffect } from "react";
+import strapiApi from "../api/strapi";
 import { Link } from "wouter";
 import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
@@ -9,47 +11,54 @@ interface Product {
   description: string;
   price: number;
   category: "service" | "digital";
-  icon: React.ReactNode;
+  icon_name: string; // تم تغيير نوع الأيقونة ليتم جلبها كاسم من API
 }
 
-const products: Product[] = [
-  {
-    id: 1,
-    name: "استشارة تقنية شخصية",
-    description: "جلسة استشارية مدتها ساعة واحدة لمناقشة مشاريعك التقنية وتقديم حلول مبتكرة",
-    price: 50000,
-    category: "service",
-    icon: <Code className="w-8 h-8" />
-  },
-  {
-    id: 2,
-    name: "دورة صناعة المحتوى الرقمي",
-    description: "دورة شاملة لتعلم صناعة المحتوى الرقمي من الصفر حتى الاحتراف",
-    price: 150000,
-    category: "digital",
-    icon: <Video className="w-8 h-8" />
-  },
-  {
-    id: 3,
-    name: "كتاب إلكتروني: دليل المبتدئين",
-    description: "كتاب شامل يغطي أساسيات البرمجة والتقنية بأسلوب مبسط وعملي",
-    price: 25000,
-    category: "digital",
-    icon: <BookOpen className="w-8 h-8" />
-  },
-  {
-    id: 4,
-    name: "حزمة قوالب جاهزة",
-    description: "مجموعة من القوالب الاحترافية للمواقع والتطبيقات قابلة للتخصيص",
-    price: 75000,
-    category: "digital",
-    icon: <Package className="w-8 h-8" />
+// دالة مساعدة لتحويل اسم الأيقونة إلى مكون React
+const getIconComponent = (iconName: string) => {
+  switch (iconName) {
+    case "Code":
+      return <Code className="w-8 h-8" />;
+    case "Video":
+      return <Video className="w-8 h-8" />;
+    case "BookOpen":
+      return <BookOpen className="w-8 h-8" />;
+    case "Package":
+      return <Package className="w-8 h-8" />;
+    default:
+      return <Package className="w-8 h-8" />;
   }
-];
+};
 
 
 
 export default function Products() {
+  const [products, setProducts] = useState<Product[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        // افتراض أن Strapi سيقوم بإنشاء نقطة نهاية (endpoint) باسم 'products'
+        const response = await strapiApi.get('/products');
+        // افتراض أن البيانات تأتي ضمن حقل 'data' وأن المحتوى الفعلي ضمن حقل 'attributes'
+        const fetchedProducts: Product[] = response.data.data.map((item: any) => ({
+          id: item.id,
+          ...item.attributes,
+        }));
+        setProducts(fetchedProducts);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+        // في حالة الفشل، يمكن استخدام قائمة منتجات فارغة أو رسالة خطأ
+        setProducts([]);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
   const handleBuyNow = (product: Product) => {
     const message = `مرحباً، أريد شراء: ${product.name}\nالسعر: ${product.price.toLocaleString('ar-IQ')} د.ع\n\nيرجى تأكيد الطلب وإرسال تفاصيل الدفع.`;
     
@@ -119,9 +128,14 @@ export default function Products() {
 
       {/* Products Grid */}
       <section className="py-8 px-4 flex-1">
-        <div className="container max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
-            {products.map((product, index) => (
+	        <div className="container max-w-6xl mx-auto">
+	          {isLoading ? (
+	            <div className="text-center text-white text-xl">جاري تحميل المنتجات...</div>
+	          ) : products.length === 0 ? (
+	            <div className="text-center text-muted-foreground text-xl">لا توجد منتجات متاحة حالياً.</div>
+	          ) : (
+	            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+	              {products.map((product, index) => (
               <motion.div
                 key={product.id}
                 className="bg-card border border-border rounded-lg p-6 hover:border-primary/50 transition-all group"
@@ -132,9 +146,9 @@ export default function Products() {
               >
                 {/* Icon */}
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="text-primary group-hover:scale-110 transition-transform">
-                    {product.icon}
-                  </div>
+	                  <div className="text-primary group-hover:scale-110 transition-transform">
+	                    {getIconComponent(product.icon_name)}
+	                  </div>
                   <span className="text-xs px-3 py-1 bg-primary/10 text-primary rounded-full">
                     {product.category === "service" ? "خدمة" : "منتج رقمي"}
                   </span>
@@ -165,10 +179,11 @@ export default function Products() {
                     اشتري الآن
                   </button>
                 </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
+	              </motion.div>
+	            ))}
+	            </div>
+	          )}
+	        </div>
       </section>
 
       {/* Payment Info */}

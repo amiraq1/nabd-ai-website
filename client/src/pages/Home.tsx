@@ -1,10 +1,45 @@
 import { Activity, CreditCard, Wallet, ShoppingBag } from "lucide-react";
-import homeContent from "../content/home.json";
+import { useState, useEffect } from "react";
+import strapiApi from "../api/strapi";
 import { Link } from "wouter";
 import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 
 export default function Home() {
+  const [homeContent, setHomeContent] = useState({
+    main_title: "جاري التحميل...",
+    sub_title: "جاري التحميل...",
+    description: "جاري تحميل المحتوى من نظام إدارة المحتوى...",
+    zaincash_number: "..."
+  });
+
+  useEffect(() => {
+    const fetchHomeContent = async () => {
+      try {
+        // افتراض أن Strapi سيقوم بإنشاء نقطة نهاية (endpoint) باسم 'home-content'
+        const response = await strapiApi.get('/home-content');
+        // افتراض أن البيانات تأتي ضمن حقل 'data' وأن المحتوى الفعلي ضمن حقل 'attributes'
+        const data = response.data.data.attributes;
+        setHomeContent({
+          main_title: data.main_title || "نبض AI",
+          sub_title: data.sub_title || "صناعة المحتوى الرقمي بأسلوب عصري",
+          description: data.description || "مرحباً، أنا عمار محمد. صانع محتوى، تقني متخصص في تبسيط المفاهيم المعقدة وتقديمها للجمهور العربي بأسلوب شيق ومبتكر",
+          zaincash_number: data.zaincash_number || "07830960059"
+        });
+      } catch (error) {
+        console.error("Error fetching home content:", error);
+        // في حالة الفشل، يمكن استخدام محتوى احتياطي (Fallback)
+        setHomeContent({
+          main_title: "نبض AI",
+          sub_title: "صناعة المحتوى الرقمي بأسلوب عصري",
+          description: "مرحباً، أنا عمار محمد. صانع محتوى، تقني متخصص في تبسيط المفاهيم المعقدة وتقديمها للجمهور العربي بأسلوب شيق ومبتكر",
+          zaincash_number: "07830960059"
+        });
+      }
+    };
+
+    fetchHomeContent();
+  }, []);
   return (
     <>
       <Helmet>
@@ -80,8 +115,12 @@ export default function Home() {
               {/* ZainCash Payment */}
               <button
                 onClick={() => {
-                  navigator.clipboard.writeText(homeContent.zaincash_number);
-                  alert(`تم نسخ رقم زين كاش: ${homeContent.zaincash_number}\n\nيمكنك الآن فتح تطبيق زين كاش وإرسال المبلغ`);
+                  if (homeContent.zaincash_number && homeContent.zaincash_number !== "...") {
+                    navigator.clipboard.writeText(homeContent.zaincash_number);
+                    alert(`تم نسخ رقم زين كاش: ${homeContent.zaincash_number}\n\nيمكنك الآن فتح تطبيق زين كاش وإرسال المبلغ`);
+                  } else {
+                    alert("رقم زين كاش غير متوفر حالياً.");
+                  }
                 }}
                 className="flex items-center gap-3 px-6 py-4 bg-card hover:bg-card/80 rounded-lg border-2 border-primary/50 hover:border-primary transition-all cursor-pointer group"
               >
