@@ -174,9 +174,12 @@ export default function Products() {
       {/* Payment Info */}
       <section className="py-8 px-4 border-t border-border/50">
         <div className="container max-w-6xl mx-auto text-center">
-          <p className="text-muted-foreground mb-4">
-            الدفع متاح عبر زين كاش فقط
-          </p>
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <CreditCard className="w-6 h-6 text-primary" />
+            <p className="text-muted-foreground">
+              الدفع متاح عبر زين كاش فقط
+            </p>
+          </div>
           <div className="inline-flex items-center gap-2 px-6 py-3 bg-card rounded-lg border border-primary/50">
             <span className="text-white font-semibold">رقم زين كاش:</span>
             <span className="text-primary font-mono text-lg">07830960059</span>

@@ -71,7 +71,10 @@ export default function Home() {
           {/* Payment Methods */}
           <div className="pt-8">
             <h4 className="text-lg sm:text-xl font-semibold text-white mb-6">
-              وسائل الدفع المعتمدة
+              <div className="flex items-center justify-center gap-3">
+                <CreditCard className="w-6 h-6 text-primary" />
+                <span>وسائل الدفع المعتمدة</span>
+              </div>
             </h4>
             <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6">
               {/* ZainCash Payment */}
